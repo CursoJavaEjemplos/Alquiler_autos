@@ -62,14 +62,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }//GEN-END:initComponents
 
+
+    private ConectarUsuario cu = new ConectarUsuario(this, true);
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-     Conexion c = new Conexion("mydb01", "12345678", "mydb", "127.0.0.1", "3306");
+    
+        cu.setLocationRelativeTo(null);
+        cu.setDefaultCloseOperation(cu.HIDE_ON_CLOSE);
+        cu.setModal(true);
+        cu.setVisible(true); //Modal: El hilo se ha detenido para this
+
+    
+    // Conexion c = new Conexion("mydb01", "12345678", "mydb", "127.0.0.1", "3306");
      
-     String msg = c.conectar();
+    // String msg = c.conectar();
      
-     JOptionPane.showMessageDialog(this, msg);
+    // JOptionPane.showMessageDialog(this, msg);
      
         
     }//GEN-LAST:event_jButton1ActionPerformed
