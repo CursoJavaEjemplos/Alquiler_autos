@@ -19,7 +19,6 @@ public class Conexion {
     ////private Statement instruccion = null; // SQL, instrucción de consulta
     ////private ResultSet conjuntoResultados = null; // Conjunto de registros, conjunto resultado
 
-    
     //Datos de la conexión
     private String usuario = "";
     private String clave = "";
@@ -57,6 +56,11 @@ public class Conexion {
         return ultimoMensajeMySQL;
     }
 
-    
+
+    public static Connection getConexion() {
+   
+        
+        return conexion;
+    }
     
 }

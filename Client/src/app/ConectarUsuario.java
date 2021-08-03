@@ -9,6 +9,8 @@ import conexion.Conexion;
  */
 public class ConectarUsuario extends javax.swing.JDialog {
 
+   
+
     /** Creates new form ConectarUsuario */
     public ConectarUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -38,6 +40,11 @@ public class ConectarUsuario extends javax.swing.JDialog {
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setText("Usuario");
 
@@ -49,15 +56,16 @@ public class ConectarUsuario extends javax.swing.JDialog {
 
         jLabel5.setText("Puerto");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("mydb01");
 
-        jTextField3.setText("jTextField3");
+        jTextField3.setText("mydb");
 
-        jTextField4.setText("jTextField4");
+        jTextField4.setText("127.0.0.1");
 
-        jTextField5.setText("jTextField5");
+        jTextField5.setText("3306");
+        jTextField5.setToolTipText("Puerto");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Conectar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -68,7 +76,7 @@ public class ConectarUsuario extends javax.swing.JDialog {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setText("12345678");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,14 +139,44 @@ public class ConectarUsuario extends javax.swing.JDialog {
         pack();
     }//GEN-END:initComponents
     
-  //  private Conexion c = null;
-    
+   // private Conexion c = null;
+   private Conexion c = null;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        
+        String usuario = this.jTextField1.getText();
+        char[] claveChar = this.jPasswordField1.getPassword();
+        String clave = String.valueOf(claveChar);
+        String nombreBD = this.jTextField3.getText();
+        String servidorIP = this.jTextField4.getText();
+        String puerto = this.jTextField5.getText();
+                
+        c = new Conexion(usuario, clave, nombreBD, servidorIP, puerto);
+                
+        String msg = c.conectar();
+                
+                //JOptionPane.showMessageDialog(this, msg);        
+                
+        this.jTextArea1.setText(msg + "\n");
+
+        clave=null;
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        
+        
+        if(c==null) {
+                    this.jTextArea1.setText("!No hay una conexión¡");
+       }else{
+                   this.jTextArea1.setText("Hay una conexión realizada");
+       }
+
+        
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
