@@ -19,8 +19,6 @@ public class AltaClienteMySQL {
             
             Statement st=null;
 
-
-
         try {
                st = Conexion.getConexion().createStatement();
                st.executeUpdate(sql);
