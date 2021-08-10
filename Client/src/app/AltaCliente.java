@@ -37,6 +37,8 @@ public class AltaCliente extends javax.swing.JDialog {
 
         jLabel2.setText("Nombre:");
 
+        jTextField1.setText("   fghfghg  ");
+
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,24 +98,27 @@ public class AltaCliente extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        String dni = this.jTextField1.getText();
-        //dni = dni.trim();
-        //dni = "";
+        String dni = this.jTextField1.getText().trim();
+        dni = dni.trim();
+       
+       // String dni=null;
+       // dni = "";
         
         //dni = null;
         
-        //try {
-          //if(dni.isEmpty() == true) {
-          //    this.jTextArea1.setText("DNI no puede se vacio");
-          //    return;
-          //}
-        //}catch(Exception ee) {
-            
-        //}
-        if(dni.equals("") == true) {
-            this.jTextArea1.setText("DNI no puede se vacio");
+        try {
+          if(dni.isEmpty() == true) {
+              this.jTextArea1.setText("DNI no puede se vacio");
+              return;
+          }
+        }catch(Exception ee) {
+            this.jTextArea1.setText("DNI no puede se nulo");
             return;
         }
+       // if(dni.equals("") == true) {
+       //     this.jTextArea1.setText("DNI no puede se vacio");
+       //     return;
+       // }
         String nombre = this.jTextField2.getText();
         String msg = ac.altaCliente(dni, nombre);
         this.jTextArea1.setText(msg);
