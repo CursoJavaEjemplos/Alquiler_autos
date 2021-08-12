@@ -148,13 +148,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     
-   
+    private EditarClientes ec = new EditarClientes(this, true);
     
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        
-        
-
+       
+        ec.setDefaultCloseOperation(bc.HIDE_ON_CLOSE);
+        ec.setModal(true);
+        ec.setLocationRelativeTo(null);
+        ec.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem4ActionPerformed
  

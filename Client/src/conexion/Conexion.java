@@ -41,6 +41,7 @@ public class Conexion {
         try {
             
             Class.forName(CONTROLADOR);
+            
             conexion = DriverManager.getConnection(URL_BASEDATOS, usuario, clave);
             
             ultimoMensajeMySQL = "Conexión realizada con éxito";

@@ -1,6 +1,7 @@
 package conexion;
 
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -12,12 +13,8 @@ public class EditaClienteMySQL {
     
     private String ultimoMensajeMySQL="";
         public String editarCliente(String dni, String nombre) {
-            
             //UPDATE `mydb`.`cliente` SET `Nombre` = 'juann' WHERE (`DNI` = '20');
-            //UPDATE `mydb`.`cliente` SET `Nombre` = 'Juan 2' WHERE (`DNI` = '19');
-            
             String sql = "UPDATE cliente SET nombre='" + nombre + "' " + "WHERE dni='" + dni + "';";
-            
             try {
                 Statement st = Conexion.getConexion().createStatement();
                 int nRegBorrados = st.executeUpdate(sql);
