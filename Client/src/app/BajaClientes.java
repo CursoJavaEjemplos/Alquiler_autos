@@ -1,14 +1,16 @@
 
 package app;
 
+import conexion.BajaClientesMySQL;
+
 /**
  *
  * @author carlo
  */
-public class BajaCliente extends javax.swing.JDialog {
+public class BajaClientes extends javax.swing.JDialog {
 
     /** Creates new form BajaCliente */
-    public BajaCliente(java.awt.Frame parent, boolean modal) {
+    public BajaClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -34,6 +36,11 @@ public class BajaCliente extends javax.swing.JDialog {
         jTextField1.setText("jTextField1");
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -74,6 +81,21 @@ public class BajaCliente extends javax.swing.JDialog {
         pack();
     }//GEN-END:initComponents
 
+    private BajaClientesMySQL  bc = new BajaClientesMySQL();
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        String dni = this.jTextField1.getText();
+        
+        String msg = bc.bajaCliente(dni);
+        
+        this.jTextArea1.setText(msg);
+
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -98,7 +120,7 @@ public class BajaCliente extends javax.swing.JDialog {
             java.util
                 .logging
                 .Logger
-                .getLogger(BajaCliente.class.getName())
+                .getLogger(BajaClientes.class.getName())
                 .log(java.util
                          .logging
                          .Level
@@ -107,7 +129,7 @@ public class BajaCliente extends javax.swing.JDialog {
             java.util
                 .logging
                 .Logger
-                .getLogger(BajaCliente.class.getName())
+                .getLogger(BajaClientes.class.getName())
                 .log(java.util
                          .logging
                          .Level
@@ -116,7 +138,7 @@ public class BajaCliente extends javax.swing.JDialog {
             java.util
                 .logging
                 .Logger
-                .getLogger(BajaCliente.class.getName())
+                .getLogger(BajaClientes.class.getName())
                 .log(java.util
                          .logging
                          .Level
@@ -125,7 +147,7 @@ public class BajaCliente extends javax.swing.JDialog {
             java.util
                 .logging
                 .Logger
-                .getLogger(BajaCliente.class.getName())
+                .getLogger(BajaClientes.class.getName())
                 .log(java.util
                          .logging
                          .Level
@@ -138,7 +160,7 @@ public class BajaCliente extends javax.swing.JDialog {
             .EventQueue
             .invokeLater(new Runnable() {
                 public void run() {
-                    BajaCliente dialog = new BajaCliente(new javax.swing.JFrame(), true);
+                    BajaClientes dialog = new BajaClientes(new javax.swing.JFrame(), true);
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
                         public void windowClosing(java.awt.event.WindowEvent e) {
