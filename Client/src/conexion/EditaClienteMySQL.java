@@ -13,12 +13,19 @@ public class EditaClienteMySQL {
     
     private String ultimoMensajeMySQL="";
         public String editarCliente(String dni, String nombre) {
+            
             //UPDATE `mydb`.`cliente` SET `Nombre` = 'juann' WHERE (`DNI` = '20');
+            
             String sql = "UPDATE cliente SET nombre='" + nombre + "' " + "WHERE dni='" + dni + "';";
+            
             try {
+                
+                
                 Statement st = Conexion.getConexion().createStatement();
                 int nRegBorrados = st.executeUpdate(sql);
+                
                 ultimoMensajeMySQL= nRegBorrados + " registro editado.";
+            
             } catch (SQLException e) {
                 ultimoMensajeMySQL="Error: " + e.getMessage();
             }
